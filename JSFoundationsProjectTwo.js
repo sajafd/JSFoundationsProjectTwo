@@ -45,7 +45,7 @@ function filterEvens(numbers) {
 function filterOdds(numbers) {
 	let oddList =[]
 	for (let counter = 0 ; counter < numbers.length ; counter++){
-		console.log(counter);
+		// console.log(counter);
 		if (evenVsOdd(numbers[counter]) === true) {
 		} else {oddList.push(numbers[counter])};
 	}
@@ -114,7 +114,8 @@ function stateNamesLongerThan(minLength) {
  *
  */
 function numberOfStateNamesLongerThan(minLength) {
-	// your code goes here!
+	let listOfLongNames = stateNamesLongerThan(minLength);
+	return listOfLongNames.length;
 }
 
 /**
@@ -143,8 +144,18 @@ function numberOfStateNamesLongerThan(minLength) {
  *
  */
 function replaceStateNames(newName, len) {
-	// your code goes here!
+	for (let counter = 0 ; counter < states.length ; counter++){
+		// console.log(`counter = ${counter}`);
+		if (states[counter].length === len){
+			// console.log(`length of state name: ${states[counter2].length}`);
+			// console.log('will change name');
+			states[counter] = newName;
+		};
+	};
+	return states;
 }
+
+
 
 /**
  * Receives a string
@@ -156,8 +167,16 @@ function replaceStateNames(newName, len) {
  *     returns 4
  *
  */
+
+let containList = []
+
 function numberOfStateNamesContaining(subString) {
-	// your code goes here!
+	for (let counter = 0 ; counter < states.length ; counter++){
+		if (states[counter].includes(subString) === true ){
+			containList.push(states[counter]);
+		};
+	};
+	return containList.length;
 }
 
 
@@ -182,23 +201,24 @@ let largeNames = stateNamesLongerThan(15);
 console.log("\n--------------------------")
 console.log("STATE NAMES LONGER THAN:");
 console.log(largeNames);
+// console.log(largeNames.length);
 
 // // numberOfStateNamesLongerThan
-// let numOfLargeStateNames = numberOfStateNamesLongerThan(10);
-// console.log("\n--------------------------")
-// console.log("NUMBER OF STATE NAMES LONGER THAN:");
-// console.log(numOfLargeStateNames);
+let numOfLargeStateNames = numberOfStateNamesLongerThan(10);
+console.log("\n--------------------------")
+console.log("NUMBER OF STATE NAMES LONGER THAN:");
+console.log(numOfLargeStateNames);
 
 // // replaceStateNames
-// let newNames = replaceStateNames("REBOUND", 12);
-// console.log("\n--------------------------")
-// console.log("REPLACE STATE NAMES:");
-// console.log(newNames);
+let newNames = replaceStateNames("REBOUND", 12);
+console.log("\n--------------------------")
+console.log("REPLACE STATE NAMES:");
+console.log(newNames);
 
 // // numberOfStateNamesContaining
-// let occurances = numberOfStateNamesContaining("New");
-// console.log("\n--------------------------")
-// console.log("NUMBER OF STATE NAMES CONTAININGa:");
-// console.log(occurances);
+let occurences = numberOfStateNamesContaining("New");
+console.log("\n--------------------------")
+console.log("NUMBER OF STATE NAMES CONTAINING:");
+console.log(occurences);
 
 // How can you know the number of states with names that contain multiple words?
